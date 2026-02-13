@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Soul ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: white;
+    font-family: 'Comic Sans MS', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Rainbow Text */
+.rainbow {
+    font-size: 2.8rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowMove 6s linear infinite;
+}
+
+@keyframes rainbowMove {
+    0% { background-position: 0% }
+    100% { background-position: 400% }
+}
+
+.buttons {
+    margin-top: 30px;
+    position: relative;
+    height: 150px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+}
+
+#yesBtn {
+    background-color: #ff4d6d;
+    color: white;
+    left: -100px;
+}
+
+#noBtn {
+    background-color: #6c757d;
+    color: white;
+    left: 100px;
+}
+
+#giftBox {
+    font-size: 80px;
+    cursor: pointer;
+    display: none;
+    margin-top: 40px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="rainbow">
+        💖💖💖 My Soul 💖💖💖 <br><br>
+        Will You Be My Valentine?
+    </div>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+
+    <div id="giftBox">🎁</div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const giftBox = document.getElementById("giftBox");
+
+let yesSize = 1;
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    yesSize += 1;
+    yesBtn.style.transform = `scale(${yesSize})`;
+
+    if (yesSize > 4) {
+        noBtn.style.display = "none";
+    }
+});
+
+yesBtn.addEventListener("click", () => {
+    document.querySelector(".buttons").style.display = "none";
+    giftBox.style.display = "block";
+});
+
+giftBox.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            background:white;
+            align-items:center;
+            justify-content:center;
+            padding:40px;
+            box-sizing:border-box;
+        ">
+
+            <!-- LEFT PHOTO -->
+            <div style="flex:1; text-align:center;">
+                <img src="love.jpeg" 
+                     style="max-width:90%; height:auto; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+            </div>
+
+            <!-- RIGHT TEXT -->
+            <div style="flex:1; padding:20px;">
+
+                <div style="
+                    font-size:2.5rem;
+                    font-weight:bold;
+                    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+                    background-size:400%;
+                    -webkit-background-clip:text;
+                    -webkit-text-fill-color:transparent;
+                    animation: rainbowMove 6s linear infinite;
+                ">
+                    ❤️ HAPPY VALENTINES DAY MY LOVE ❤️
+                </div>
+
+                <div style="
+                    font-size:1.4rem;
+                    margin-top:25px;
+                    line-height:1.8;
+                    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+                    background-size:400%;
+                    -webkit-background-clip:text;
+                    -webkit-text-fill-color:transparent;
+                    animation: rainbowMove 6s linear infinite;
+                ">
+                    You are my everything.<br>
+                    Because of you, I am alive today ❤️<br><br>
+                    🎬 "Tu hai toh mujhe fir aur kya chahiye..."<br>
+                    👑 "Teri ore... Teri ore..."<br><br>
+                    🌍 Hazaaron mein kisi ko taqdeer aisi mili hai<br>
+                    Ik 🐶 aur 🐰 jaisi ❤️
+                </div>
+
+            </div>
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
